@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QLTSTB.Forms
 {
-    public partial class frnPhongBan : Form
+    public partial class frmThongKe : Form
     {
-        public frnPhongBan()
+        public frmThongKe()
         {
             InitializeComponent();
         }

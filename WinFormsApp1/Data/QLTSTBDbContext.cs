@@ -12,8 +12,18 @@ namespace QLTSTB.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-             "Server=DESKTOP-RL40ENI;Database=QLBH;Trusted_Connection=True;TrustServerCertificate=True;");
+             "Server=DESKTOP-RL40ENI;Database=QLTSTB;Trusted_Connection=True;TrustServerCertificate=True;");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
+            {
+                relationship.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+        }
+        public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<ThietBiVanPhong> ThietBiVanPhongs { get; set; }
         public DbSet<LoaiThietBi> LoaiThietBis { get; set; }
         public DbSet<NhanVien> NhanViens { get; set; }

@@ -1,4 +1,5 @@
-namespace WinFormsApp1
+using QLTSTB.Forms;
+namespace QLTSTB
 {
     internal static class Program
     {
